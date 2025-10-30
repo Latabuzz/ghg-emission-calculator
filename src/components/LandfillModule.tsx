@@ -276,7 +276,7 @@ export default function LandfillModule() {
                   moduleType="landfill"
                   input={input}
                   result={result}
-                  disabled={!result.totalCO2e || result.totalCO2e === 0}
+                  disabled={!(result.totalCO2e ?? 0) || (result.totalCO2e ?? 0) === 0}
                 />
               </div>
             </div>
@@ -315,7 +315,7 @@ export default function LandfillModule() {
               
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: '8px', transition: 'all 0.3s ease' }}>
                 <span style={{ fontWeight: '600' }}>TOTAL CO₂e</span>
-                <span style={{ fontWeight: 'bold', fontSize: '18px' }}>{result.totalCO2e.toFixed(2)} ton</span>
+                <span style={{ fontWeight: 'bold', fontSize: '18px' }}>{(result.totalCO2e ?? 0).toFixed(2)} ton</span>
               </div>
             </div>
           </div>

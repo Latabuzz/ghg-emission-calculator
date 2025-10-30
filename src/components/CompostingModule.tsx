@@ -48,13 +48,13 @@ export default function CompostingModule() {
     { name: 'CO₂', value: result.co2, color: '#4CA771' },
     { name: 'CH₄', value: result.ch4, color: '#85B0BA' },
     { name: 'N₂O', value: result.n2o, color: '#FF8210' },
-    { name: 'Avoided', value: Math.abs(Math.min(result.totalCO2e * 1000 - result.co2 - result.ch4 - result.n2o, 0)), color: '#10B981' },
+    { name: 'Avoided', value: Math.abs(Math.min((result.totalCO2e ?? 0) * 1000 - result.co2 - result.ch4 - result.n2o, 0)), color: '#10B981' },
   ];
 
   const pieData = chartData.filter(item => item.value > 0);
 
   const totalOrganicWaste = input.foodWaste + input.gardenWaste;
-  const avoidedEmissions = result.totalCO2e < 0 ? Math.abs(result.totalCO2e) : 0;
+  const avoidedEmissions = (result.totalCO2e ?? 0) < 0 ? Math.abs(result.totalCO2e ?? 0) : 0;
 
   return (
     <div className="p-6" style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)' }}>
@@ -214,7 +214,7 @@ export default function CompostingModule() {
                   moduleType="composting"
                   input={input}
                   result={result}
-                  disabled={!result.totalCO2e || result.totalCO2e === 0}
+                  disabled={!(result.totalCO2e ?? 0) || (result.totalCO2e ?? 0) === 0}
                 />
               </div>
             </div>
@@ -267,7 +267,7 @@ export default function CompostingModule() {
               
               <div className="flex justify-between items-center p-4 rounded-lg" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', transition: 'all 0.3s ease' }}>
                 <span className="font-semibold">NET CO₂e</span>
-                <span className="font-bold text-lg">{result.totalCO2e.toFixed(2)} ton</span>
+                <span className="font-bold text-lg">{(result.totalCO2e ?? 0).toFixed(2)} ton</span>
               </div>
             </div>
           </div>

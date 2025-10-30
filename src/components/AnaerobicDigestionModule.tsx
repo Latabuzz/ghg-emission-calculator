@@ -288,7 +288,7 @@ export default function AnaerobicDigestionModule() {
                   moduleType="anaerobic-digestion"
                   input={input}
                   result={result}
-                  disabled={!result.totalCO2e || result.totalCO2e === 0}
+                  disabled={!(result.totalCO2e ?? 0) || (result.totalCO2e ?? 0) === 0}
                 />
               </div>
             </div>

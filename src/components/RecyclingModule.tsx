@@ -262,7 +262,7 @@ export default function RecyclingModule() {
                   moduleType="recycling"
                   input={input}
                   result={result}
-                  disabled={!result.totalCO2e}
+                  disabled={!(result.totalCO2e ?? 0)}
                 />
               </div>
             </div>

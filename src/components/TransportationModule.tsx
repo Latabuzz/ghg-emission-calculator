@@ -230,7 +230,7 @@ export default function TransportationModule() {
                     Total Fuel (L/month)
                   </label>
                   <div style={{ padding: '8px 16px', backgroundColor: 'var(--muted)', borderRadius: '8px', transition: 'all 0.2s ease' }}>
-                    <span style={{ fontWeight: '600', color: 'var(--foreground)' }}>{input.totalFuel.toFixed(2)} L</span>
+                    <span style={{ fontWeight: '600', color: 'var(--foreground)' }}>{(input.totalFuel ?? 0).toFixed(2)} L</span>
                   </div>
                 </div>
               </>
@@ -315,7 +315,7 @@ export default function TransportationModule() {
                   moduleType="transportation"
                   input={input}
                   result={result}
-                  disabled={!result.totalCO2e || result.totalCO2e === 0}
+                  disabled={!(result.totalCO2e ?? 0) || (result.totalCO2e ?? 0) === 0}
                 />
               </div>
             </div>
@@ -345,7 +345,7 @@ export default function TransportationModule() {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px', backgroundColor: 'var(--muted)', borderRadius: '8px', transition: 'all 0.2s ease' }}>
                 <span style={{ fontSize: '14px', color: 'var(--muted-foreground)' }}>Total Fuel</span>
                 <span style={{ fontWeight: '600', color: 'var(--foreground)' }}>
-                  {input.fuelType === 'electric' ? `${input.electricity} kWh` : `${input.totalFuel.toFixed(2)} L`}
+                  {input.fuelType === 'electric' ? `${input.electricity} kWh` : `${(input.totalFuel ?? 0).toFixed(2)} L`}
                 </span>
               </div>
               
@@ -366,7 +366,7 @@ export default function TransportationModule() {
               
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: '8px', transition: 'all 0.3s ease' }}>
                 <span style={{ fontWeight: '600' }}>TOTAL CO₂e</span>
-                <span style={{ fontWeight: 'bold', fontSize: '18px' }}>{result.totalCO2e.toFixed(2)} ton</span>
+                <span style={{ fontWeight: 'bold', fontSize: '18px' }}>{(result.totalCO2e ?? 0).toFixed(2)} ton</span>
               </div>
             </div>
           </div>
