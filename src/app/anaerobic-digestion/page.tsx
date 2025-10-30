@@ -1,24 +1,13 @@
-import Sidebar from '@/components/Sidebar';
+'use client'
+
 import AnaerobicDigestionModule from '@/components/AnaerobicDigestionModule';
-import AIAssistant from '@/components/AIAssistant';
+import ProtectedLayout from '@/components/ProtectedLayout';
 
 export default function AnaerobicDigestionPage() {
   return (
-    <>
-      <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: 'var(--background)' }}>
-        <Sidebar />
-        <main style={{ 
-          flex: 1,
-          overflowY: 'auto',
-          height: '100vh',
-          width: '100%'
-        }}
-        >
-          <AnaerobicDigestionModule />
-        </main>
-      </div>
-      <AIAssistant />
-    </>
+    <ProtectedLayout>
+      <AnaerobicDigestionModule />
+    </ProtectedLayout>
   );
 }
 

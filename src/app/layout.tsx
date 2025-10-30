@@ -2,6 +2,7 @@ import './globals.css'
 import { Lato } from 'next/font/google'
 import AIAssistant from '@/components/AIAssistant'
 import { ThemeProvider } from '@/contexts/ThemeContext'
+import { AuthProvider } from '@/contexts/AuthContext'
 
 const lato = Lato({ 
   weight: ['400', '700'],
@@ -24,7 +25,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={lato.className}>
         <ThemeProvider>
-          {children}
+          <AuthProvider>
+            {children}
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,24 +1,13 @@
-import Sidebar from '@/components/Sidebar';
+'use client'
+
 import Dashboard from '@/components/Dashboard';
-import AIAssistant from '@/components/AIAssistant';
+import ProtectedLayout from '@/components/ProtectedLayout';
 
 export default function Home() {
   return (
-    <>
-      <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: 'var(--background)' }}>
-        <Sidebar />
-        <main style={{ 
-          flex: 1,
-          overflowY: 'auto',
-          height: '100vh',
-          width: '100%'
-        }}
-        >
-          <Dashboard />
-        </main>
-      </div>
-      <AIAssistant />
-    </>
+    <ProtectedLayout>
+      <Dashboard />
+    </ProtectedLayout>
   );
 }
 

@@ -18,10 +18,12 @@ import {
   FileDown,
   BookOpen,
   Menu,
-  X
+  X,
+  LogOut
 } from 'lucide-react';
 import { useState } from 'react';
 import ThemeToggle from './ThemeToggle';
+import { useAuth } from '@/contexts/AuthContext';
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
@@ -42,6 +44,7 @@ const navigation = [
 export default function Sidebar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { logout } = useAuth();
 
   return (
     <>
@@ -146,6 +149,19 @@ export default function Sidebar() {
               </span>
               <ThemeToggle />
             </div>
+
+            {/* Logout Button */}
+            <button
+              onClick={logout}
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-all duration-200 hover:opacity-90"
+              style={{
+                backgroundColor: 'var(--sidebar-primary)',
+                color: 'var(--sidebar-primary-foreground)',
+              }}
+            >
+              <LogOut size={18} />
+              <span>Logout</span>
+            </button>
 
             {/* Credits */}
             <div className="text-xs text-center" style={{ color: 'var(--muted-foreground)' }}>
