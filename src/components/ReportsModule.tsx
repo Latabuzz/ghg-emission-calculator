@@ -366,9 +366,10 @@ export default function ReportsModulev2() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               className="rounded-2xl shadow-sm p-6 cursor-pointer hover:shadow-lg transition-all"
-              style={{ backgroundColor: 'var(--card)', color: 'var(--card-foreground)' }}
               onClick={() => !isExporting && handleExport(option.id)}
               style={{
+                backgroundColor: 'var(--card)',
+                color: 'var(--card-foreground)',
                 opacity: isExporting && selectedFormat !== option.id ? 0.5 : 1,
                 pointerEvents: isExporting ? 'none' : 'auto'
               }}
